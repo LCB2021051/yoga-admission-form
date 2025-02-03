@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // const API_URL = "http://localhost:5000/api";
-const API_URL = "https://yoga-admission-form-ic7d.onrender.com";
+const API_URL = "https://yoga-admission-form-ic7d.onrender.com/api";
 
 // ✅ Fetch all batches
 export const getBatches = async () => {
