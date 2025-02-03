@@ -15,10 +15,7 @@ const app = express();
 // ✅ Enable CORS
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "https://yoga-admission-form-ten.vercel.app",
-    ],
+    origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
