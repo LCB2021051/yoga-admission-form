@@ -24,6 +24,10 @@ const User = sequelize.define("User", {
       max: 65,
     },
   },
+  gender: {
+    type: DataTypes.ENUM("Male", "Female", "Other"), // ✅ Gender Field
+    allowNull: false,
+  },
   registration_date: {
     type: DataTypes.DATE,
     defaultValue: DataTypes.NOW,

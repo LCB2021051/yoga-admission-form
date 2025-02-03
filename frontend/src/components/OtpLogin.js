@@ -10,20 +10,30 @@ const OtpLogin = () => {
   const [showRegistration, setShowRegistration] = useState(false);
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
+  const [gender, setGender] = useState(""); // ✅ Added gender field
+  const [loading, setLoading] = useState(false); // ✅ Track request state
   const navigate = useNavigate();
 
   const handleSendOTP = async () => {
     setError("");
+    if (!/^[6-9]\d{9}$/.test(phone)) {
+      setError("❌ Invalid phone number! Enter a 10-digit valid number.");
+      return;
+    }
+    setLoading(true); // ✅ Disable button
     try {
       await requestOTP(phone);
       setStep(2);
     } catch (error) {
       setError(error.response?.data?.message || "❌ Error sending OTP.");
+    } finally {
+      setLoading(false); // ✅ Enable button
     }
   };
 
   const handleVerifyOTP = async () => {
     setError("");
+    setLoading(true); // ✅ Disable button
     try {
       const response = await verifyOTP(phone, otp);
 
@@ -37,12 +47,20 @@ const OtpLogin = () => {
       }
     } catch (error) {
       setError(error.response?.data?.message || "❌ Invalid OTP.");
+    } finally {
+      setLoading(false); // ✅ Enable button
     }
   };
 
   const handleRegister = async () => {
+    if (!["Male", "Female", "Other"].includes(gender)) {
+      setError("❌ Please select a valid gender.");
+      return;
+    }
+
+    setLoading(true); // ✅ Disable button
     try {
-      const userData = { name, phone_number: phone, age };
+      const userData = { name, phone_number: phone, age, gender };
       const response = await registerUser(userData);
 
       localStorage.setItem("token", response.data.token);
@@ -53,6 +71,8 @@ const OtpLogin = () => {
       navigate("/home");
     } catch (error) {
       setError(error.response?.data?.message || "❌ Registration failed.");
+    } finally {
+      setLoading(false); // ✅ Enable button
     }
   };
 
@@ -72,8 +92,12 @@ const OtpLogin = () => {
             required
             style={styles.input}
           />
-          <button onClick={handleSendOTP} style={styles.button}>
-            Send OTP
+          <button
+            onClick={handleSendOTP}
+            style={styles.button}
+            disabled={loading}
+          >
+            {loading ? "Sending..." : "Send OTP"}
           </button>
         </div>
       ) : (
@@ -86,8 +110,12 @@ const OtpLogin = () => {
             required
             style={styles.input}
           />
-          <button onClick={handleVerifyOTP} style={styles.button}>
-            Verify OTP
+          <button
+            onClick={handleVerifyOTP}
+            style={styles.button}
+            disabled={loading}
+          >
+            {loading ? "Verifying..." : "Verify OTP"}
           </button>
         </div>
       )}
@@ -113,12 +141,28 @@ const OtpLogin = () => {
               required
               style={styles.input}
             />
-            <button onClick={handleRegister} style={styles.button}>
-              Register
+            <select
+              value={gender}
+              onChange={(e) => setGender(e.target.value)}
+              required
+              style={styles.input}
+            >
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+            <button
+              onClick={handleRegister}
+              style={styles.button}
+              disabled={loading}
+            >
+              {loading ? "Registering..." : "Register"}
             </button>
             <button
               onClick={() => setShowRegistration(false)}
               style={styles.cancelButton}
+              disabled={loading}
             >
               Cancel
             </button>
@@ -177,8 +221,9 @@ const styles = {
     borderRadius: "6px",
     transition: "0.3s",
   },
-  buttonHover: {
-    background: "#218838",
+  buttonDisabled: {
+    background: "#6c757d",
+    cursor: "not-allowed",
   },
   cancelButton: {
     background: "#dc3545",

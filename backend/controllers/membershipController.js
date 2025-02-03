@@ -17,6 +17,18 @@ exports.getMembership = async (req, res) => {
   }
 };
 
+exports.getAllMemberships = async (req, res) => {
+  try {
+    const memberships = await Membership.findAll();
+
+    console.log("Memberships: ", memberships);
+
+    res.status(200).json({ message: "response", memberships });
+  } catch (error) {
+    res.status(500).json({ message: "❌ Error fetching memberships.", error });
+  }
+};
+
 exports.addMembership = async (req, res) => {
   try {
     const { user_id, batch_id, payment_id } = req.body;

@@ -3,13 +3,18 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 exports.registerUser = async (req, res) => {
-  const { name, phone_number, age } = req.body;
+  const { name, phone_number, age, gender } = req.body;
 
   // ✅ Validate Age
   if (age < 18 || age > 65) {
     return res
       .status(400)
       .json({ message: "❌ Age must be between 18 and 65." });
+  }
+
+  // ✅ Validate Gender
+  if (!["Male", "Female", "Other"].includes(gender)) {
+    return res.status(400).json({ message: "❌ Invalid gender selection!" });
   }
 
   try {
@@ -20,7 +25,7 @@ exports.registerUser = async (req, res) => {
     }
 
     // ✅ Create New User
-    const user = await User.create({ name, phone_number, age });
+    const user = await User.create({ name, phone_number, age, gender });
 
     // ✅ Generate JWT Token
     const token = jwt.sign({ userId: user.user_id }, process.env.JWT_SECRET, {
@@ -67,14 +72,19 @@ exports.getUserById = async (req, res) => {
 exports.updateUser = async (req, res) => {
   try {
     const { user_id } = req.params;
-    const { name, phone_number, age } = req.body;
+    const { name, phone_number, age, gender } = req.body;
 
     const user = await User.findByPk(user_id);
     if (!user) {
       return res.status(404).json({ message: "❌ User not found!" });
     }
 
-    await user.update({ name, phone_number, age });
+    // ✅ Validate Gender before updating
+    if (gender && !["Male", "Female", "Other"].includes(gender)) {
+      return res.status(400).json({ message: "❌ Invalid gender selection!" });
+    }
+
+    await user.update({ name, phone_number, age, gender });
 
     res.status(200).json({ message: "✅ User updated successfully!", user });
   } catch (error) {
