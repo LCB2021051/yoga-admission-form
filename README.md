@@ -5,26 +5,31 @@ A **full-stack web application** for managing yoga class registrations, membersh
 ## 🌟 Features
 
 ### 🔹 **User Authentication**
+
 - **OTP-based login** (via phone number)
 - Automatic **user registration** if not found
 - Secure **JWT authentication**
 
 ### 🔹 **Batch Management**
+
 - View available **batches**
 - Register for a batch
 - Admin can **add/delete batches** (if needed)
 
 ### 🔹 **Membership Management**
+
 - Active membership is **displayed prominently**
 - View **previous memberships**
 - Users can **register for a new membership** if expired
 
 ### 🔹 **Payments**
+
 - Integrated **payment processing**
 - Secure **payment validation**
 - Automatic membership activation after payment
 
 ### 🔹 **Responsive UI**
+
 - **2x2 grid layout** for batches
 - **Split view** for desktop (Batches & Membership Info)
 - **Mobile-friendly navbar** to switch between views
@@ -34,11 +39,13 @@ A **full-stack web application** for managing yoga class registrations, membersh
 ## 🛠️ Tech Stack
 
 ### 🖥️ **Frontend**
+
 - **React.js** (UI development)
 - **React Router** (Navigation)
 - **Axios** (API calls)
 
 ### 🌐 **Backend**
+
 - **Node.js & Express.js** (API & authentication)
 - **Sequelize ORM** (Database interaction)
 - **MySQL** (Relational database)
@@ -46,6 +53,7 @@ A **full-stack web application** for managing yoga class registrations, membersh
 - **Speakeasy** (OTP generation & verification)
 
 ### ☁️ **Deployment**
+
 - **Frontend:** Vercel / Netlify
 - **Backend:** Railway / Render
 - **Database:** MySQL on Railway / Planetscale
@@ -55,18 +63,21 @@ A **full-stack web application** for managing yoga class registrations, membersh
 ## 🚀 Getting Started
 
 ### 🔹 **1. Clone the Repository**
+
 ```sh
 git clone https://github.com/yourusername/yoga-admission-form.git
 cd yoga-admission-form
 ```
 
 ### 🔹 **2. Setup Backend**
+
 ```sh
 cd backend
 npm install
 ```
 
 - **Configure `.env` file**:
+
   ```env
   MYSQL_HOST=localhost
   MYSQL_USER=root
@@ -82,6 +93,7 @@ npm install
   ```
 
 ### 🔹 **3. Setup Frontend**
+
 ```sh
 cd ../frontend
 npm install
@@ -97,29 +109,33 @@ npm install
 ## 🔗 API Endpoints
 
 ### 🔹 **Authentication**
-| Endpoint        | Method | Description |
-|----------------|--------|-------------|
-| `/api/auth/send-otp`  | POST   | Send OTP to phone number |
-| `/api/auth/verify-otp` | POST   | Verify OTP and login |
+
+| Endpoint               | Method | Description              |
+| ---------------------- | ------ | ------------------------ |
+| `/api/auth/send-otp`   | POST   | Send OTP to phone number |
+| `/api/auth/verify-otp` | POST   | Verify OTP and login     |
 
 ### 🔹 **User & Membership**
-| Endpoint         | Method | Description |
-|-----------------|--------|-------------|
-| `/api/users/register`  | POST   | Register a new user |
-| `/api/membership/:user_id` | GET | Get user's membership details |
-| `/api/membership` | POST  | Add a new membership |
+
+| Endpoint                   | Method | Description                   |
+| -------------------------- | ------ | ----------------------------- |
+| `/api/users/register`      | POST   | Register a new user           |
+| `/api/membership/:user_id` | GET    | Get user's membership details |
+| `/api/membership`          | POST   | Add a new membership          |
 
 ### 🔹 **Batches & Payments**
-| Endpoint          | Method | Description |
-|------------------|--------|-------------|
-| `/api/batches/all`  | GET   | Get all available batches |
-| `/api/payments/pay` | POST  | Process a payment |
+
+| Endpoint            | Method | Description               |
+| ------------------- | ------ | ------------------------- |
+| `/api/batches/all`  | GET    | Get all available batches |
+| `/api/payments/pay` | POST   | Process a payment         |
 
 ---
 
 ## 🎯 Deployment Guide
 
 ### **Frontend Deployment**
+
 1. **Build the React App**
    ```sh
    npm run build
@@ -129,7 +145,9 @@ npm install
    - **Netlify**: `netlify deploy`
 
 ### **Backend Deployment**
+
 1. **Deploy to Railway / Render**
+
    - **Railway**: Connect repository → Add `.env` variables → Deploy
    - **Render**: Add Node.js service → Set environment variables → Deploy
 
@@ -143,9 +161,11 @@ npm install
 ---
 
 ## 👥 Contributors
-- **[Your Name](https://github.com/yourusername)** – Developer
+
+- **VivekKorah(https://github.com/yourusername)** – Developer
 
 ---
 
 ## 📜 License
+
 This project is **MIT Licensed**. Feel free to use and modify. 🎉
