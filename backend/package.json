@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "babel server.js -d dist",
-    "start": "node dist/server.js",
+    "start": "node server.js",
     "dev": "nodemon server.js"
   },
   "keywords": [],
