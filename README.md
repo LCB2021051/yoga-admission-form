@@ -3,7 +3,7 @@
 A **full-stack web application** for managing yoga class registrations, membership tracking, and payment processing.
 
 - **Deployment-** [DemoLink](https://yoga-admission-form-ten.vercel.app/)
-- **Project Report** [ReportLink](https://docs.google.com/document/d/1TK_3L_Hg2798J7qtR_Nzv0BVcbOqWhOfHr7-FLsf3JY/edit?usp=sharing)
+- **Project Report-** [ReportLink](https://docs.google.com/document/d/1TK_3L_Hg2798J7qtR_Nzv0BVcbOqWhOfHr7-FLsf3JY/edit?usp=sharing)
 
 ## 🌟 Features
 
