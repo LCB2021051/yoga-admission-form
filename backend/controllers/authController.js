@@ -35,7 +35,7 @@ exports.sendOTP = async (req, res) => {
 
     console.log(`🔢 OTP for ${phone_number}: ${otp}`); // Simulate OTP sending (use Twilio in production)
 
-    res.status(200).json({ message: "✅ OTP sent successfully!" });
+    res.status(200).json({ message: "✅ OTP sent successfully!", otp });
   } catch (error) {
     res.status(500).json({ message: "❌ Error sending OTP.", error });
   }
