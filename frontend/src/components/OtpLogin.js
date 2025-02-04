@@ -23,7 +23,10 @@ const OtpLogin = () => {
     setLoading(true); // ✅ Disable button
     try {
       const res = await requestOTP(phone);
+
+      // showing OTP in console for dev perpose
       console.log("OTP is :", res.data.otp);
+
       setStep(2);
     } catch (error) {
       setError(error.response?.data?.message || "❌ Error sending OTP.");
