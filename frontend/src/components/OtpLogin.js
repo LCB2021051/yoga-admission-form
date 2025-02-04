@@ -22,7 +22,8 @@ const OtpLogin = () => {
     }
     setLoading(true); // ✅ Disable button
     try {
-      await requestOTP(phone);
+      const res = await requestOTP(phone);
+      console.log("OTP is :", res.data.otp);
       setStep(2);
     } catch (error) {
       setError(error.response?.data?.message || "❌ Error sending OTP.");
