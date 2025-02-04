@@ -21,7 +21,7 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
     height: "100vh",
-    background: "#f5f5f5",
+    background: "transparent",
   },
   container: {
     textAlign: "center",

@@ -251,7 +251,7 @@ const styles = {
     padding: "10px",
   },
   batchCard: {
-    background: "#fff",
+    background: "rgba(255, 255, 255, 0.6)",
     padding: "10px",
     borderRadius: "8px",
     boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
