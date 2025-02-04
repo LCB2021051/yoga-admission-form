@@ -106,6 +106,7 @@ const OtpLogin = () => {
         </div>
       ) : (
         <div style={styles.formGroup}>
+          <p style={styles.error}>check console for otp</p>
           <input
             type="text"
             placeholder="Enter OTP"
